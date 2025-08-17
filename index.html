@@ -1,194 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--
+    Rakesh Gahir | Cybersecurity Engineer – Advanced, fully responsive single‑file portfolio
+    - Desktop + Mobile optimized
+    - Accessible (semantic HTML, ARIA labels, color contrast, keyboard nav)
+    - Scroll animations via IntersectionObserver (reduced for prefers-reduced-motion)
+    - Sticky nav with scrollspy + mobile hamburger
+    - Hero with profile photo (replace src with your image)
+    - Back-to-top button
+    - Print styles
+    - SEO, Open Graph, JSON‑LD
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rakesh Gahir | Cybersecurity Engineer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Cybersecurity Engineer with 4.1+ years in SOC operations, incident response, SIEM/XDR, and security tooling. View skills, projects, and experience." />
+  <meta name="theme-color" content="#0a0f1a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://www.svgrepo.com/show/193915/cyber-security.svg" type="image/svg+xml">
+  <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    body {background:#0a0f1a; color:#e5e7eb; font-family:'Roboto',sans-serif; margin:0;}
-    header {background:#0e1830; color:#58a6ff; text-align:center; padding:60px 20px 40px 20px;}
-    header h1 {font-size:2.6rem;}
-    header p {color:#ccc;}
-    nav {display:flex;justify-content:center;align-items:center; background:#161c2d; position:sticky;top:0;z-index:100;}
-    nav a {color:#c2e9fb;padding:18px 16px;text-decoration:none;transition:.2s;font-weight:500;}
-    nav a:hover {color:#58a6ff;border-bottom:2px solid #58a6ff;}
-    section {padding:60px 20px;max-width:1100px;margin:auto;}
-    section h2 {color:#58a6ff;text-transform:uppercase;font-size:1.8rem;margin-bottom:30px;}
-    .skills-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;}
-    .skill-card {background:#1e293b;padding:22px;border-radius:10px;box-shadow:0 2px 6px #06142e55;}
-    .timeline {border-left:3px solid #58a6ff; margin-left:14px; padding-left:22px;}
-    .job {margin-bottom:40px;}
-    .job h3 {color:#fff;}
-    .job span {color:#9ca3af;}
-    .projects-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px;}
-    .project-card {background:#181f34; border-radius:12px; box-shadow:0 2px 8px #02061744; padding:24px;}
-    .project-card h4 {color:#58a6ff; margin:0 0 0.6em;}
-    .edu-list,.cert-list {list-style:none; margin:0; padding:0;}
-    .edu-list li,.cert-list li {background:#1e293b; margin-bottom:10px; padding:16px; border-radius:8px;}
-    .contact-form {background:#1e293b; padding:25px;max-width:500px;margin:auto; border-radius:12px;}
-    .contact-form label {display:block; margin-top:12px; color:#58a6ff;}
-    .contact-form input,.contact-form textarea {width:100%; padding:10px; margin-top:6px; border-radius:6px; border:none; background:#111827; color:#e5e7eb;}
-    .contact-form button {margin-top:16px; background:#58a6ff;color:#0a0f1a;padding:12px 32px;font-size:1.1rem;border:none;border-radius:7px;cursor:pointer;}
-    .contact-form button:hover {background:#4ad6ff;}
-    footer {background:#111827;color:#a9b4cb;text-align:center;padding:30px 10px;}
-    footer a {color:#58a6ff; margin:0 5px;}
-    [data-animate] {opacity:0; transform:translateY(36px); transition:all 0.8s;}
-    [data-animate].visible {opacity:1; transform:translateY(0);}
-    /* Responsive */
-    @media(max-width:600px) { header h1{font-size:2rem;} .projects-grid{grid-template-columns:1fr;}}
+    :root{
+      --bg:#0a0f1a;            /* page */
+      --panel:#0f172a;         /* cards/nav */
+      --panel-2:#111827;       /* inputs */
+      --brand:#58a6ff;         /* accents */
+      --brand-2:#4ad6ff;
+      --text:#e5e7eb;          /* primary text */
+      --muted:#94a3b8;         /* secondary text */
+      --border:#1f2937;
+      --shadow:0 10px 30px rgba(2,6,23,.45);
+      --radius:14px;
+      --radius-sm:10px;
+      --container:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+
+    /* --- Global layout helpers --- */
+    .container{max-width:var(--container);margin:auto;padding:0 20px}
+    .section{padding:64px 0}
+    h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+    h2{font-size:clamp(1.4rem,1.2rem + 1.2vw,2rem);text-transform:uppercase;color:var(--brand);letter-spacing:.06em}
+    .muted{color:var(--muted)}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);color:#001b2e;border:none;border-radius:10px;padding:.8rem 1.1rem;font-weight:700;cursor:pointer;text-decoration:none}
+    .btn.secondary{background:#1f2937;color:var(--text);border:1px solid #243044}
+    .btn:hover{filter:brightness(1.05)}
+    .chip{display:inline-block;border:1px solid #233046;background:#0b1427;color:#c7d2fe;padding:.35rem .55rem;border-radius:999px;font-size:.85rem}
+
+    /* --- Header / Nav --- */
+    header.site-header{position:sticky;top:0;z-index:80;background:rgba(15,23,42,.85);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .brand i{color:var(--brand)}
+    nav.primary{display:flex;gap:.6rem}
+    nav.primary a{color:#c2e9fb;text-decoration:none;padding:.7rem .9rem;border-radius:8px}
+    nav.primary a.active,nav.primary a:hover{color:#fff;background:#0b1427;border:1px solid #1d2a44}
+    .hamburger{display:none;background:transparent;border:0;color:var(--text);padding:.5rem;border-radius:8px}
+
+    /* --- Hero --- */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:32px;padding:40px 0 20px}
+    .hero .title{font-size:clamp(1.8rem,1.2rem + 2.2vw,3rem)}
+    .hero .subtitle{color:var(--muted);max-width:56ch}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .avatar{width:min(180px,45vw);aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:4px solid #0b1427;box-shadow:var(--shadow);background:#0b1427}
+
+    /* --- Grid sections --- */
+    .grid{display:grid;gap:18px}
+    .grid.skills{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .card.skill{padding:22px}
+    .card.skill b{color:#dbeafe}
+    .timeline{border-left:3px solid var(--brand);padding-left:22px;margin-left:6px}
+    .job{margin:0 0 32px}
+    .job h3{margin:0 0 .3rem}
+    .job span{color:var(--muted);font-size:.95rem}
+
+    .projects{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .project{padding:22px}
+    .project h4{color:var(--brand);margin:.1rem 0 .5rem}
+
+    .list{list-style:none;margin:0;padding:0}
+    .list li{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:0 0 10px}
+
+    /* --- Contact --- */
+    form.contact{max-width:560px;margin:auto}
+    label{display:block;margin-top:12px;color:var(--brand)}
+    input,textarea{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:1px solid #263246;background:var(--panel-2);color:var(--text)}
+    input:focus,textarea:focus{outline:2px solid var(--brand)}
+    .actions{margin-top:14px}
+
+    /* --- Footer & back-to-top --- */
+    footer{background:#0b1427;border-top:1px solid var(--border);padding:26px 0;color:#a9b4cb;text-align:center}
+    .social a{display:inline-flex;align-items:center;gap:.35rem;color:#c2e9fb;text-decoration:none;padding:.4rem .6rem;border-radius:8px}
+    .social a:hover{background:#0f1a30}
+    #toTop{position:fixed;right:16px;bottom:16px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}
+    #toTop.visible{opacity:1;transform:none;pointer-events:auto}
+
+    /* --- Animations (honor reduced motion) --- */
+    [data-animate]{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+    [data-animate].visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      [data-animate]{opacity:1;transform:none}
+      .hero{animation:none}
+    }
+
+    /* --- Responsive --- */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;gap:20px;text-align:center}
+      .hero .cta{justify-content:center}
+    }
+    @media (max-width:760px){
+      nav.primary{display:none}
+      .hamburger{display:inline-flex}
+    }
+
+    /* --- Print --- */
+    @media print{
+      header.site-header,.btn,#toTop{display:none !important}
+      .card,.list li{box-shadow:none !important}
+      a[href^="http"]::after{content:" (" attr(href) ")"}
+    }
   </style>
 </head>
 <body>
-<header>
-  <h1>Rakesh Gahir</h1>
-  <p>Cybersecurity Engineer | <a href="mailto:Rakeshgahir@gmail.com" style="color:#4ad6ff">Rakeshgahir@gmail.com</a> | India<br>
-     <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank" style="color:#4ad6ff">LinkedIn</a> | +91-7978674292
-  </p>
-</header>
-<nav>
-  <a href="#profile">Profile</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <!-- Sticky Header / Nav -->
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Home">
+        <i data-feather="shield"></i>
+        <span>Rakesh Gahir</span>
+      </a>
+      <nav class="primary" aria-label="Primary navigation">
+        <a href="#profile" class="nav-link">Profile</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button class="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <nav id="mobileMenu" class="container" aria-label="Mobile navigation" hidden>
+      <div class="card" style="padding:10px;margin:10px 0;display:grid;gap:6px">
+        <a class="nav-link" href="#profile">Profile</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#education">Education</a>
+        <a class="nav-link" href="#certifications">Certifications</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-<section id="profile" data-animate>
-  <h2>Profile</h2>
-  <p>Cybersecurity professional with 4.1+ years of hands-on experience in SOC operations, security incident investigation, implementation & migration of security technologies. Bachelor’s in Computer Science. Excellent troubleshooting, fast learner, proven leadership, and problem-solving ability. Effective communicator and committed team player.</p>
-</section>
+  <!-- Hero -->
+  <section class="section" id="top" aria-label="Intro">
+    <div class="container hero">
+      <div>
+        <h1 class="title">Cybersecurity Engineer • Threat Hunter • Incident Responder</h1>
+        <p class="subtitle">Cybersecurity professional with <strong>4.1+ years</strong> in SOC operations, security incident investigation, and implementation/migration of security technologies. Excellent troubleshooting, fast learner, proven leadership, and problem-solving ability. Effective communicator and committed team player.</p>
+        <div class="cta">
+          <a class="btn" href="mailto:Rakeshgahir@gmail.com"><i data-feather="mail"></i><span>Email</span></a>
+          <a class="btn secondary" target="_blank" rel="noopener" href="https://www.linkedin.com/in/rakeshgahir"><i data-feather="linkedin"></i><span>LinkedIn</span></a>
+          <span class="chip" aria-label="Location">India</span>
+          <span class="chip" aria-label="Phone">+91‑7978674292</span>
+        </div>
+      </div>
+      <div style="justify-self:center">
+        <!-- Replace the src below with your real photo path or URL -->
+        <img src="assets/rakesh.jpg" alt="Portrait of Rakesh Gahir" class="avatar" loading="lazy" width="320" height="320">
+      </div>
+    </div>
+  </section>
 
-<section id="skills" data-animate>
-  <h2>Skills & Technologies</h2>
-  <div class="skills-grid">
-    <div class="skill-card"><b>SIEM:</b><br> Azure Sentinel (Admin), ArcSight, Splunk (Analyst)</div>
-    <div class="skill-card"><b>EDR/XDR:</b><br> Microsoft 365 Defender XDR, Crowdstrike Falcon</div>
-    <div class="skill-card"><b>DLP:</b><br> Forcepoint, Akamai</div>
-    <div class="skill-card"><b>Firewall/Proxy:</b><br> FortiGate, PfSense, Cisco Umbrella</div>
-    <div class="skill-card"><b>SOAR:</b><br> XSOAR, Shuffle</div>
-    <div class="skill-card"><b>Threat Intelligence:</b><br> MISP, Pulse Dive</div>
-    <div class="skill-card"><b>Languages:</b><br> Python, Bash, SQL</div>
-    <div class="skill-card"><b>IPS/Signatures:</b><br> Zeek, Suricata, Snort, Yara</div>
-    <div class="skill-card"><b>Vulnerability:</b> <br> OpenVAS, Qualys, Nessus, Nmap</div>
-    <div class="skill-card"><b>Packet Analysis:</b><br> Wireshark, TCPDump, Brim</div>
-    <div class="skill-card"><b>Cloud:</b><br> Microsoft Azure</div>
-    <div class="skill-card"><b>Email Security:</b><br> Azure ATP, Proxmox</div>
-    <div class="skill-card"><b>OS:</b><br> Windows, Ubuntu, CentOS, Kali Linux</div>
-  </div>
-</section>
+  <!-- Profile -->
+  <section class="section" id="profile" data-animate>
+    <div class="container">
+      <h2>Profile</h2>
+      <div class="card" style="padding:22px">
+        <p>Cybersecurity professional with 4.1+ years of hands-on experience in SOC operations, security incident investigation, implementation &amp; migration of security technologies. <strong>Bachelor’s in Computer Science.</strong> Excellent troubleshooting, fast learner, proven leadership, and problem‑solving ability. Effective communicator and committed team player.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="experience" data-animate>
-  <h2>Experience</h2>
-  <div class="timeline">
-    <div class="job">
-      <h3>Sr Information Security Analyst | Resillion</h3>
-      <span>Remote | Oct 2023 – Present</span>
-      <ul>
-        <li>Leading 24x7 SOC operations with tools like Sentinel, CrowdStrike, Elastic, Defender XDR</li>
-        <li>Security audits, risk assessments, incident response, and client solution delivery</li>
+  <!-- Skills -->
+  <section class="section" id="skills" data-animate>
+    <div class="container">
+      <h2>Skills &amp; Technologies</h2>
+      <div class="grid skills">
+        <div class="card skill"><b>SIEM:</b><br> Azure Sentinel (Admin), ArcSight, Splunk (Analyst)</div>
+        <div class="card skill"><b>EDR/XDR:</b><br> Microsoft 365 Defender XDR, CrowdStrike Falcon</div>
+        <div class="card skill"><b>DLP:</b><br> Forcepoint, Akamai</div>
+        <div class="card skill"><b>Firewall/Proxy:</b><br> FortiGate, PfSense, Cisco Umbrella</div>
+        <div class="card skill"><b>SOAR:</b><br> XSOAR, Shuffle</div>
+        <div class="card skill"><b>Threat Intelligence:</b><br> MISP, Pulse Dive</div>
+        <div class="card skill"><b>Languages:</b><br> Python, Bash, SQL</div>
+        <div class="card skill"><b>IPS/Signatures:</b><br> Zeek, Suricata, Snort, YARA</div>
+        <div class="card skill"><b>Vulnerability:</b><br> OpenVAS, Qualys, Nessus, Nmap</div>
+        <div class="card skill"><b>Packet Analysis:</b><br> Wireshark, TCPDump, Brim</div>
+        <div class="card skill"><b>Cloud:</b><br> Microsoft Azure</div>
+        <div class="card skill"><b>Email Security:</b><br> Azure ATP, Proxmox</div>
+        <div class="card skill"><b>OS:</b><br> Windows, Ubuntu, CentOS, Kali Linux</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience" data-animate>
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="job">
+          <h3>Sr Information Security Analyst | Resillion</h3>
+          <span>Remote | Oct 2023 – Present</span>
+          <ul>
+            <li>Leading 24×7 SOC operations with tools like Sentinel, CrowdStrike, Elastic, Defender XDR.</li>
+            <li>Conducting security audits, risk assessments, incident response, and client solution delivery.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>SOC Analyst | Myntra Designs Pvt. Ltd (via MSSP)</h3>
+          <span>Bangalore | Aug 2022 – Oct 2023</span>
+          <ul>
+            <li>24×7×365 monitoring of EDR alerts, incident triage, and threat investigation.</li>
+            <li>Mentored junior analysts and collaborated in crisis response.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>SOC Analyst | UCO Bank (via MSSP)</h3>
+          <span>Kolkata | Oct 2021 – Aug 2022</span>
+          <ul>
+            <li>ArcSight ESM log monitoring &amp; correlation, RCA, custom SIEM dashboards.</li>
+            <li>Daily/weekly/monthly threat analysis reporting.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>Cybersecurity Engineer / SOC Analyst | Sattrix</h3>
+          <span>Ahmedabad | Jul 2021 – Oct 2021</span>
+          <ul>
+            <li>L2 SIEM/XDR, threat hunting, alert triage, and incident remediation.</li>
+            <li>Configuration for endpoint, email, and network security.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects" data-animate>
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid projects">
+        <article class="card project" aria-label="Security Automation with SOAR">
+          <h4>Security Automation with SOAR</h4>
+          <p>Designed and implemented automated playbooks in XSOAR to detect and respond to phishing, reducing response time and analyst fatigue.</p>
+        </article>
+        <article class="card project" aria-label="Threat Hunting with Zeek and Suricata">
+          <h4>Threat Hunting Platform with Zeek &amp; Suricata</h4>
+          <p>Developed network traffic monitoring and adversary detection solutions using Zeek, Suricata, and custom YARA rules for near real‑time intelligence.</p>
+        </article>
+        <article class="card project" aria-label="Cloud Security Posture Assessment">
+          <h4>Cloud Security Posture Assessment</h4>
+          <p>Led Azure security posture review, identifying misconfigurations and reporting actionable mitigations to client teams.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education" data-animate>
+    <div class="container">
+      <h2>Education</h2>
+      <ul class="list">
+        <li><strong>B.Tech</strong>, Computer Science Engineering — Centurion University (2017–2021)</li>
+        <li><strong>Intermediate</strong> — BN International College (2014–2016)</li>
+        <li><strong>Secondary (X)</strong> — Young Blood Public School (2013–2014)</li>
       </ul>
     </div>
-    <div class="job">
-      <h3>SOC Analyst | Myntra Designs Pvt. Ltd (via MSSP)</h3>
-      <span>Bangalore | Aug 2022 – Oct 2023</span>
-      <ul>
-        <li>24x7x365 monitoring of EDR alerts, incident triage, threat investigation</li>
-        <li>Mentored junior analysts, collaborated in crisis response</li>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section" id="certifications" data-animate>
+    <div class="container">
+      <h2>Certifications</h2>
+      <ul class="list" aria-label="certifications">
+        <li>Certified Ethical Hacker (EC‑Council) – ECC8725910463</li>
+        <li>CompTIA Cybersecurity Analyst (CySA+)</li>
+        <li>Microsoft Certified: Security Operations Analyst Associate (SC‑200)</li>
+        <li>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC‑900)</li>
+        <li>AWS Certified Cloud Practitioner</li>
       </ul>
     </div>
-    <div class="job">
-      <h3>SOC Analyst | UCO Bank (via MSSP)</h3>
-      <span>Kolkata | Oct 2021 – Aug 2022</span>
-      <ul>
-        <li>ArcSight ESM log monitoring & correlation, RCA, custom SIEM dashboards</li>
-        <li>Daily/weekly/monthly threat analysis reporting</li>
-      </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" data-animate>
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form class="contact card" novalidate>
+        <div style="padding:20px">
+          <label for="name">Name *</label>
+          <input id="name" name="name" required autocomplete="name" placeholder="Your name">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="your@email.com">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Type your message…"></textarea>
+          <div class="actions">
+            <button class="btn" type="submit"><i data-feather="send"></i><span>Send Message</span></button>
+            <span class="muted" style="margin-left:10px">Demo only — connect a backend for real delivery.</span>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="job">
-      <h3>Cybersecurity Engineer/SOC Analyst | Sattrix</h3>
-      <span>Ahmedabad | Jul 2021 – Oct 2021</span>
-      <ul>
-        <li>L2 SIEM/XDR, threat hunting, alert triage, and incident remediation</li>
-        <li>Configuration for endpoint, email, network security</li>
-      </ul>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© <span id="year"></span> Rakesh Gahir — Cybersecurity Portfolio</p>
+      <p class="social" aria-label="social links">
+        <a href="mailto:Rakeshgahir@gmail.com"><i data-feather="mail"></i><span>Email</span></a>
+        <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank" rel="noopener"><i data-feather="linkedin"></i><span>LinkedIn</span></a>
+      </p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section id="projects" data-animate>
-  <h2>Featured Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h4>Security Automation with SOAR</h4>
-      <p>Designed and implemented automated playbooks in XSOAR to detect and respond to phishing, dramatically reducing response time and analyst fatigue.</p>
-    </div>
-    <div class="project-card">
-      <h4>Threat Hunting Platform with Zeek & Suricata</h4>
-      <p>Developed network traffic monitoring and adversary detection solutions using Zeek, Suricata, and custom YARA rules for real-time intelligence.</p>
-    </div>
-    <div class="project-card">
-      <h4>Cloud Security Posture Assessment</h4>
-      <p>Led Azure security posture review, identifying and documenting misconfigurations and reporting actionable mitigations to client teams.</p>
-    </div>
-  </div>
-</section>
+  <a id="toTop" class="btn" href="#top" aria-label="Back to top"><i data-feather="arrow-up"></i></a>
 
-<section id="education" data-animate>
-  <h2>Education</h2>
-  <ul class="edu-list">
-    <li><b>B.Tech</b>, Computer Science Engineering<br>Centurion University (2017–2021)</li>
-    <li><b>Intermediate</b>, BN International College (2014–2016)</li>
-    <li><b>Secondary (X)</b>, Young Blood Public School (2013–2014)</li>
-  </ul>
-</section>
+  <!-- JSON-LD Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rakesh Gahir",
+    "jobTitle": "Cybersecurity Engineer",
+    "url": "",
+    "email": "mailto:Rakeshgahir@gmail.com",
+    "telephone": "+917978674292",
+    "sameAs": ["https://www.linkedin.com/in/rakeshgahir"],
+    "knowsAbout": ["Security Operations Center","Incident Response","SIEM","XDR","Threat Hunting","Azure"],
+    "address": {"@type":"PostalAddress","addressCountry":"IN"}
+  }
+  </script>
 
-<section id="certifications" data-animate>
-  <h2>Certifications</h2>
-  <ul class="cert-list">
-    <li>Certified Ethical Hacker (EC-Council) - ECC8725910463</li>
-    <li>CompTIA Cybersecurity Analyst (CySA+)</li>
-    <li>Microsoft Certified: Security Operations Analyst Associate (SC-200)</li>
-    <li>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</li>
-    <li>AWS Certified Cloud Practitioner</li>
-  </ul>
-</section>
+  <!-- Scripts -->
+  <script>
+    feather.replace();
 
-<section id="contact" data-animate>
-  <h2>Contact Me</h2>
-  <form class="contact-form">
-    <label for="name">Name</label>
-    <input id="name" name="name" required>
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required>
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<footer>
-  <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio Website</p>
-  <a href="mailto:Rakeshgahir@gmail.com">Email</a> |
-  <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank">LinkedIn</a>
-</footer>
-
-<script>
-  // Reveal sections on scroll
-  const items = document.querySelectorAll("[data-animate]");
-  window.addEventListener("scroll", () => {
-    const reveal = window.innerHeight * 0.85;
-    items.forEach(item => {
-      if(item.getBoundingClientRect().top < reveal) item.classList.add("visible");
+    // Mobile menu toggle
+    const ham = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    ham.addEventListener('click', ()=>{
+      const isOpen = ham.getAttribute('aria-expanded') === 'true';
+      ham.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.hidden = isOpen;
+      ham.querySelector('svg').setAttribute('data-icon', isOpen ? 'menu' : 'x');
+      feather.replace();
     });
-  });
-  // Dummy contact form alert (replace with backend integration as desired)
-  document.querySelector('.contact-form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Message sent! (This is a demo. Integrate with your email backend for real submissions.)');
-  });
-</script>
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      ham.setAttribute('aria-expanded','false');
+      mobileMenu.hidden = true;
+    }));
+
+    // Scrollspy (desktop links)
+    const links = document.querySelectorAll('.nav-link');
+    const sections = [...document.querySelectorAll('section[id]')];
+    const spy = () => {
+      const fromTop = window.scrollY + 84;
+      let current = sections[0].id;
+      for (const sec of sections){
+        if (sec.offsetTop <= fromTop) current = sec.id;
+      }
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+    };
+    window.addEventListener('scroll', spy);
+    window.addEventListener('load', spy);
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+      })
+    },{threshold:.16});
+    document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    const toggleTop = ()=>{
+      if (window.scrollY > 400) toTop.classList.add('visible'); else toTop.classList.remove('visible');
+    };
+    window.addEventListener('scroll', toggleTop);
+
+    // Contact form (demo validation)
+    const form = document.querySelector('form.contact');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = (data.get('name')||'').trim();
+      const email = (data.get('email')||'').trim();
+      const msg = (data.get('message')||'').trim();
+      if(!name || !email || !msg){
+        alert('Please complete all required fields.');
+        return;
+      }
+      if(!/^\S+@\S+\.\S+$/.test(email)){
+        alert('Please enter a valid email.');
+        return;
+      }
+      alert('Message sent! (Demo only — hook up a backend to deliver emails.)');
+      form.reset();
+    });
+  </script>
 </body>
 </html>
