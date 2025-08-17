@@ -6,7 +6,6 @@
   <title>Rakesh Gahir | Cybersecurity Engineer Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="https://www.svgrepo.com/show/193915/cyber-security.svg" type="image/svg+xml">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       background: #000;
@@ -46,7 +45,9 @@
       color: #d0d0d0; padding: 18px 16px; text-decoration: none; font-weight: 500;
       position:relative; transition:.2s;
     }
-    nav .active, nav a:hover { color: #fff; }
+    nav .active, nav a:hover {
+      color: #fff;
+    }
     nav .active:after, nav a:hover:after {
       content:'';
       display:block;
@@ -99,25 +100,55 @@
       transform: translateY(-6px) scale(1.025);
       box-shadow: 0 12px 40px #0008;
     }
+    .projects-grid .project-card h4 {
+      color:#fff; font-size:1.17rem; margin-bottom:6px; margin-top:0;
+      letter-spacing:.5px;
+    }
     .timeline { border-left: 3px solid #222; margin-left: 16px; padding-left: 26px;}
     .job { margin-bottom: 42px;}
     .job h3 { color: #fff;}
     .job span {color: #bcbcbc;}
-    .edu-list, .cert-list { list-style: none; margin: 0; padding: 0; }
+    .edu-list, .cert-list {
+      list-style: none; margin: 0; padding: 0;
+    }
     .edu-list li, .cert-list li {
       background: #121212;
       margin-bottom: 10px; padding: 15px 18px;
       border-radius: 8px; border-left: 3px solid #222;
-      color:#e8e8e8; transition: .14s;
+      color:#e8e8e8;
+      transition: .14s;
     }
     .edu-list li:hover, .cert-list li:hover {background:#181818;}
-    canvas {
-      background: #111111;
-      border-radius: 12px;
-      margin-top: 16px;
-      width: 100% !important;
-      height: 350px !important;
+    .contact-form {
+      background: #181818;
+      padding:30px; max-width:520px; margin:auto; border-radius:15px;
+      box-shadow:0 6px 25px #0008;
     }
+    .contact-form label {
+      color: #fff; display:block; margin-top:13px;
+    }
+    .contact-form input, .contact-form textarea {
+      width:100%; padding:11px; margin-top:4px;
+      border-radius: 6px; border:1.3px solid #222;
+      background: #101010; color: #fff; font-size:1em;
+      transition:.18s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {outline:2px solid #fff;}
+    .contact-form button {
+      margin-top:18px; background: #fff;
+      color: #111; padding: 13px 34px;font-size: 1.09rem;
+      border:none; border-radius:8px; font-weight:700;
+      cursor:pointer; transition:.18s;
+      box-shadow:0 2px 12px #0006;
+    }
+    .contact-form button:hover {background:#e0e0e0; color:#000;}
+    .contact-social {text-align:center;margin-top:20px;}
+    .contact-social a {
+      display:inline-block; margin:6px 15px;
+      font-size:1.4em; color:#fff;
+      transition:.24s; vertical-align:middle;
+    }
+    .contact-social a:hover {color:#bbb;}
     footer {
       background: #111;
       color: #bbb;
@@ -129,6 +160,13 @@
       border-top:1.5px solid #222;
     }
     footer a { color: #fff; margin: 0 5px;}
+    .fade-in { opacity:0; transform:translateY(54px) scale(0.98); transition:all 1s;}
+    .fade-in.visible {opacity:1; transform:translateY(0) scale(1);}
+    @media (max-width:760px) {
+      header {padding:44px 8px;}
+      header h1{font-size:2.1rem;}
+      .skills-grid,.projects-grid {grid-template-columns:1fr;}
+    }
   </style>
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
@@ -149,13 +187,12 @@
   <a href="#skills" class="nav-link">Skills</a>
   <a href="#experience" class="nav-link">Experience</a>
   <a href="#projects" class="nav-link">Projects</a>
-  <a href="#growth" class="nav-link">Skill Growth</a>
   <a href="#education" class="nav-link">Education</a>
   <a href="#certifications" class="nav-link">Certifications</a>
   <a href="#contact" class="nav-link">Contact</a>
 </nav>
 
-<section id="profile">
+<section id="profile" class="fade-in">
   <h2>Profile</h2>
   <p>
     Cybersecurity professional with 4.1+ years of hands-on experience in SOC operations, security incident investigation, implementation & migration of security technologies.<br>
@@ -163,11 +200,11 @@
   </p>
 </section>
 
-<section id="skills" class="glass">
+<section id="skills" class="glass fade-in">
   <h2>Skills &amp; Technologies</h2>
   <div class="skills-grid">
-    <div class="skill-card"><b>SIEM:</b> Azure Sentinel, ArcSight, Splunk</div>
-    <div class="skill-card"><b>EDR/XDR:</b> Microsoft 365 Defender, Crowdstrike Falcon</div>
+    <div class="skill-card"><b>SIEM:</b> Azure Sentinel (Admin), ArcSight, Splunk (Analyst)</div>
+    <div class="skill-card"><b>EDR/XDR:</b> Microsoft 365 Defender XDR, Crowdstrike Falcon</div>
     <div class="skill-card"><b>DLP:</b> Forcepoint, Akamai</div>
     <div class="skill-card"><b>Firewall/Proxy:</b> FortiGate, PfSense, Cisco Umbrella</div>
     <div class="skill-card"><b>SOAR:</b> XSOAR, Shuffle</div>
@@ -182,103 +219,140 @@
   </div>
 </section>
 
-<section id="experience">
+<section id="experience" class="fade-in">
   <h2>Experience</h2>
-  <!-- Keep your timeline jobs here -->
+  <div class="timeline">
+    <div class="job">
+      <h3>Sr Information Security Analyst | Resillion</h3>
+      <span>Remote | Oct 2023 – Present</span>
+      <ul>
+        <li>Leading 24x7 SOC operations with Sentinel, CrowdStrike, Elastic, Defender XDR</li>
+        <li>Security audits, risk assessments, incident response, and client solution delivery</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>SOC Analyst | Myntra Designs Pvt. Ltd (via MSSP)</h3>
+      <span>Bangalore | Aug 2022 – Oct 2023</span>
+      <ul>
+        <li>24x7x365 monitoring of EDR alerts, incident triage, and threat investigation</li>
+        <li>Mentored junior analysts, collaborated in crisis response</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>SOC Analyst | UCO Bank (via MSSP)</h3>
+      <span>Kolkata | Oct 2021 – Aug 2022</span>
+      <ul>
+        <li>ArcSight ESM log monitoring & correlation, RCA, custom SIEM dashboards</li>
+        <li>Daily/weekly/monthly threat analysis reporting</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Cybersecurity Engineer/SOC Analyst | Sattrix</h3>
+      <span>Ahmedabad | Jul 2021 – Oct 2021</span>
+      <ul>
+        <li>L2 SIEM/XDR, threat hunting, alert triage, and incident remediation</li>
+        <li>Configuration for endpoint, email, network security</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<section id="projects" class="glass">
+<section id="projects" class="glass fade-in">
   <h2>Featured Projects</h2>
-  <!-- Keep your project cards here -->
+  <div class="projects-grid">
+    <div class="project-card">
+      <h4>Security Automation with SOAR</h4>
+      <p>Implemented automated playbooks in XSOAR for phishing detection/response, lowering response times and analyst workload.</p>
+    </div>
+    <div class="project-card">
+      <h4>Threat Hunting Platform with Zeek & Suricata</h4>
+      <p>Developed network traffic monitoring and adversary detection using Zeek, Suricata, and custom YARA rules.</p>
+    </div>
+    <div class="project-card">
+      <h4>Cloud Security Posture Assessment</h4>
+      <p>Led Azure security posture review, documented misconfigurations, and reported actionable mitigation paths.</p>
+    </div>
+  </div>
 </section>
 
-<section id="growth" class="glass">
-  <h2>Skill Growth Over Time</h2>
-  <canvas id="skillsChart"></canvas>
-</section>
-
-<section id="education" class="glass">
+<section id="education" class="glass fade-in">
   <h2>Education</h2>
-  <!-- Education list -->
+  <ul class="edu-list">
+    <li><b>B.Tech</b>, Computer Science Engineering — Centurion University (2017–2021)</li>
+    <li><b>Intermediate</b>, BN International College (2014–2016)</li>
+    <li><b>Secondary (X)</b>, Young Blood Public School (2013–2014)</li>
+  </ul>
 </section>
 
-<section id="certifications" class="glass">
+<section id="certifications" class="glass fade-in">
   <h2>Certifications</h2>
-  <!-- Certifications list -->
+  <ul class="cert-list">
+    <li>Certified Ethical Hacker (EC-Council) - ECC8725910463</li>
+    <li>CompTIA Cybersecurity Analyst (CySA+)</li>
+    <li>Microsoft Certified: Security Operations Analyst Associate (SC-200)</li>
+    <li>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</li>
+    <li>AWS Certified Cloud Practitioner</li>
+  </ul>
 </section>
 
-<section id="contact" class="glass">
+<section id="contact" class="glass fade-in">
   <h2>Contact Me</h2>
-  <!-- Contact form -->
+  <form class="contact-form">
+    <label for="name">Name *</label>
+    <input id="name" name="name" required autocomplete="off" placeholder="Your name">
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required autocomplete="off" placeholder="your@email.com">
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" rows="4" required placeholder="Type your message..."></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="contact-social">
+    <a href="mailto:Rakeshgahir@gmail.com" title="Email"><i data-feather="mail"></i></a>
+    <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank" title="LinkedIn"><i data-feather="linkedin"></i></a>
+  </div>
 </section>
-
 <footer>
   <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio. Crafted with <span style="color:#fff;">&#10084;</span> & AI.</p>
   <a href="mailto:Rakeshgahir@gmail.com">Email</a> |
   <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank">LinkedIn</a>
 </footer>
-
 <script>
+  // Feather icons
   feather.replace();
 
-  // Chart.js skill growth chart
-  const ctx = document.getElementById('skillsChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Jan 2021', 'Jun 2021', 'Dec 2021', 'Jun 2022', 'Dec 2022', 'Jun 2023', 'Dec 2023'],
-      datasets: [
-        {
-          label: 'Python',
-          data: [40, 55, 68, 75, 83, 90, 95],
-          borderColor: 'rgba(54, 162, 235, 1)',
-          backgroundColor: 'rgba(54, 162, 235, 0.3)',
-          tension: 0.3,
-          fill: true,
-          pointRadius: 4
-        },
-        {
-          label: 'SIEM Tools',
-          data: [35, 48, 60, 70, 80, 88, 92],
-          borderColor: 'rgba(255, 206, 86, 1)',
-          backgroundColor: 'rgba(255, 206, 86, 0.3)',
-          tension: 0.3,
-          fill: true,
-          pointRadius: 4
-        },
-        {
-          label: 'Cloud Security',
-          data: [20, 33, 46, 60, 72, 85, 90],
-          borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgba(75, 192, 192, 0.3)',
-          tension: 0.3,
-          fill: true,
-          pointRadius: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: { display: true, text: 'Skill proficiency progression (%)', font: { size: 18, weight: 'bold' } },
-        legend: { position: 'top', labels: { font: { size: 14 } } },
-        tooltip: { mode: 'index', intersect: false }
-      },
-      interaction: { mode: 'nearest', axis: 'x', intersect: false },
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 100,
-          ticks: { stepSize: 10, color: '#eee', font: { size: 13 } },
-          grid: { color: 'rgba(255,255,255,0.1)' }
-        },
-        x: {
-          ticks: { color: '#eee', font: { size: 13 } },
-          grid: { display: false }
-        }
-      },
-      animation: { duration: 2000, easing: 'easeOutQuart' }
-    }
+  // Nav highlight
+  const navLinks = document.querySelectorAll('nav .nav-link');
+  const sections = Array.from(document.querySelectorAll("section")).filter(Boolean);
+
+  function highlightNav() {
+    let closestIdx = 0;
+    let minDist = Infinity;
+    sections.forEach((sec,i) => {
+      const rect = sec.getBoundingClientRect();
+      const dist = Math.abs(rect.top - 64);
+      if(dist < minDist && rect.top < window.innerHeight - 100) {
+        minDist = dist; closestIdx = i;
+      }
+    });
+    navLinks.forEach(l=>l.classList.remove('active'));
+    navLinks[closestIdx].classList.add('active');
+  }
+  window.addEventListener('scroll', highlightNav);
+
+  // Section fade in
+  function sectionFadeIn() {
+    document.querySelectorAll('.fade-in').forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top < window.innerHeight*0.91) sec.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll',sectionFadeIn);
+  window.addEventListener('DOMContentLoaded',() => {highlightNav();sectionFadeIn();});
+
+  // Demo contact form handler
+  document.querySelector('.contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Message sent! (This is demo only — connect a backend for live delivery.)');
   });
 </script>
 </body>
