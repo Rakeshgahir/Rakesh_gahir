@@ -8,44 +8,45 @@
   <link rel="icon" href="https://www.svgrepo.com/show/193915/cyber-security.svg" type="image/svg+xml">
   <style>
     body {
-      background: linear-gradient(120deg, #091146 0%, #191a2b 100%);
-      color: #e5e7eb;
+      background: #000;
+      color: #f0f0f0;
       font-family: 'Roboto', sans-serif;
       margin: 0;
       min-height: 100vh;
       scroll-behavior: smooth;
     }
     header {
-      background: radial-gradient(circle at 80% 20%, #3143e6 0%, #152259 80%), #151D32;
-      color: #58a6ff;
+      background: #111;
+      color: #fff;
       text-align: center;
       padding: 80px 20px 40px 20px;
+      border-bottom: 2px solid #222;
     }
     .avatar {
       width:90px; height:90px; border-radius:50%;
-      object-fit:cover; margin-bottom:18px; box-shadow: 0 5px 32px #3143e688;
-      border: 4px solid #58a6ff;
+      object-fit:cover; margin-bottom:18px; box-shadow: 0 5px 32px #0008;
+      border: 4px solid #fff;
       background:#fff;
     }
     header h1 { font-size: 2.7rem; margin-bottom:10px;}
-    header .tagline { color: #82aaff; font-size: 1.25rem; margin-bottom:10px;}
+    header .tagline { color: #e0e0e0; font-size: 1.25rem; margin-bottom:10px;}
     header .header-links {margin-bottom:0;}
     header a {
-      color:#4ad6ff; font-weight:600; margin:0 7px; text-decoration:none;
+      color:#fff; font-weight:600; margin:0 7px; text-decoration:none;
       transition:.2s;
     }
-    header a:hover {color:#fff;}
+    header a:hover {color:#bbb;}
     nav {
       display: flex; justify-content: center; align-items: center;
-      background: #181f34; position: sticky; top: 0; z-index: 150;
-      box-shadow:0 2px 6px #02082612;
+      background: #181818; position: sticky; top: 0; z-index: 150;
+      box-shadow:0 2px 10px #0007;
     }
     nav a {
-      color: #c2e9fb; padding: 18px 16px; text-decoration: none; font-weight: 500;
+      color: #d0d0d0; padding: 18px 16px; text-decoration: none; font-weight: 500;
       position:relative; transition:.2s;
     }
     nav .active, nav a:hover {
-      color: #62c7ff;
+      color: #fff;
     }
     nav .active:after, nav a:hover:after {
       content:'';
@@ -53,8 +54,8 @@
       margin:auto; margin-top:3px;
       width:30px; height:3px;
       border-radius:2px;
-      background:#58a6ff;
-      opacity:.7;
+      background:#fff;
+      opacity:.9;
       transition:.3s;
     }
     section {
@@ -63,17 +64,19 @@
       position:relative;
     }
     section h2 {
-      color: #58a6ff;
+      color: #fff;
       text-transform: uppercase;
       font-size: 1.8rem;
-      margin-bottom: 28px;
       letter-spacing:2px;
+      margin-bottom: 28px;
+      border-bottom: 1.5px solid #1a1a1a;
+      padding-bottom: 8px;
     }
     .glass {
-      background: rgba(24,34,55,0.67);
+      background: rgba(16,16,16,0.98);
       border-radius: 16px;
-      box-shadow: 0 6px 32px #13265f2a;
-      border: 1.5px solid #22306688;
+      box-shadow: 0 7px 36px #0007;
+      border: 1.5px solid #222;
       backdrop-filter: blur(8px);
     }
     .skills-grid, .projects-grid {
@@ -85,86 +88,86 @@
     .skill-card, .project-card {
       padding: 26px 20px;
       border-radius: 14px;
-      box-shadow: 0 4px 15px #05061822;
-      color: #eefdff;
-      background: rgba(17,28,45,0.75);
-      border-bottom: 2.5px solid #44c6ff55;
-      border-right: 2.5px solid #4176e055;
-      transition:.25s;
+      box-shadow: 0 4px 15px #0004;
+      color: #fff;
+      background: #181818;
+      border-bottom: 2.5px solid #222;
+      border-right: 2.5px solid #222;
+      transition: .22s;
     }
     .skill-card:hover, .project-card:hover {
-      transform:translateY(-5px) scale(1.025);
-      box-shadow: 0 12px 40px #28388526;
-      background:rgba(34,45,66,0.94)
+      background: #232323;
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 12px 40px #0008;
     }
     .projects-grid .project-card h4 {
-      color:#76cbfd; font-size:1.17rem; margin-bottom:6px; margin-top:0;
+      color:#fff; font-size:1.17rem; margin-bottom:6px; margin-top:0;
       letter-spacing:.5px;
     }
-    .timeline { border-left: 3px solid #58a6ff; margin-left: 16px; padding-left: 26px;}
+    .timeline { border-left: 3px solid #222; margin-left: 16px; padding-left: 26px;}
     .job { margin-bottom: 42px;}
     .job h3 { color: #fff;}
-    .job span {color: #9ca3af;}
+    .job span {color: #bcbcbc;}
     .edu-list, .cert-list {
       list-style: none; margin: 0; padding: 0;
     }
     .edu-list li, .cert-list li {
-      background: rgba(22,34,55,0.7);
+      background: #121212;
       margin-bottom: 10px; padding: 15px 18px;
-      border-radius: 8px; border-left:3px solid #2ad4ff42;
-      transition:.14s;
+      border-radius: 8px; border-left: 3px solid #222;
+      color:#e8e8e8;
+      transition: .14s;
     }
-    .edu-list li:hover, .cert-list li:hover {background:rgba(45,86,255,0.07);}
+    .edu-list li:hover, .cert-list li:hover {background:#181818;}
     .contact-form {
-      background:rgba(17,27,47,0.86);
-      padding: 30px; max-width: 520px; margin: auto; border-radius: 15px;
-      box-shadow:0 6px 25px #05104016;
+      background: #181818;
+      padding:30px; max-width:520px; margin:auto; border-radius:15px;
+      box-shadow:0 6px 25px #0008;
     }
     .contact-form label {
-      color: #58a6ff; display:block; margin-top: 13px;
+      color: #fff; display:block; margin-top:13px;
     }
     .contact-form input, .contact-form textarea {
-      width: 100%; padding: 11px; margin-top: 4px;
-      border-radius: 6px; border:1.3px solid #253b6e;
-      background: #111827; color: #e5e7eb; font-size:1em;
+      width:100%; padding:11px; margin-top:4px;
+      border-radius: 6px; border:1.3px solid #222;
+      background: #101010; color: #fff; font-size:1em;
       transition:.18s;
     }
-    .contact-form input:focus, .contact-form textarea:focus {outline:2px solid #58a6ffbb;}
+    .contact-form input:focus, .contact-form textarea:focus {outline:2px solid #fff;}
     .contact-form button {
-      margin-top: 18px; background:linear-gradient(90deg,#58a6ff,#38c6ff 90%);
-      color: #0a0f1a; padding:13px 34px;font-size:1.09rem;
+      margin-top:18px; background: #fff;
+      color: #111; padding: 13px 34px;font-size: 1.09rem;
       border:none; border-radius:8px; font-weight:700;
-      cursor:pointer; transition:background .19s;
-      box-shadow:0 2px 12px #53e1fa40;
+      cursor:pointer; transition:.18s;
+      box-shadow:0 2px 12px #0006;
     }
-    .contact-form button:hover {background:linear-gradient(90deg,#37bffd,#32eaff);color:#001;}
+    .contact-form button:hover {background:#e0e0e0; color:#000;}
     .contact-social {text-align:center;margin-top:20px;}
     .contact-social a {
       display:inline-block; margin:6px 15px;
-      font-size:1.4em; color:#58a6ff;
+      font-size:1.4em; color:#fff;
       transition:.24s; vertical-align:middle;
     }
-    .contact-social a:hover {color:#38d9ff;}
+    .contact-social a:hover {color:#bbb;}
     footer {
-      background: #141b29;
-      color: #a9b4cb;
+      background: #111;
+      color: #bbb;
       text-align: center;
       padding: 26px 10px 16px 10px;
       font-size:1rem;
       margin-top:42px;
       letter-spacing:.2px;
+      border-top:1.5px solid #222;
     }
-    footer a { color: #58a6ff; margin: 0 5px;}
+    footer a { color: #fff; margin: 0 5px;}
     .fade-in { opacity:0; transform:translateY(54px) scale(0.98); transition:all 1s;}
     .fade-in.visible {opacity:1; transform:translateY(0) scale(1);}
-    /* Responsive */
     @media (max-width:760px) {
       header {padding:44px 8px;}
       header h1{font-size:2.1rem;}
       .skills-grid,.projects-grid {grid-template-columns:1fr;}
     }
   </style>
-  <!-- Feather icons CDN for social/contact -->
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
@@ -309,15 +312,15 @@
   </div>
 </section>
 <footer>
-  <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio. Crafted with <span style="color:#fc5185;">&#10084;</span> & AI.</p>
+  <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio. Crafted with <span style="color:#fff;">&#10084;</span> & AI.</p>
   <a href="mailto:Rakeshgahir@gmail.com">Email</a> |
   <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank">LinkedIn</a>
 </footer>
 <script>
-  // Icon library for social/contact
+  // Feather icons
   feather.replace();
 
-  // Smooth nav highlight on scroll
+  // Nav highlight
   const navLinks = document.querySelectorAll('nav .nav-link');
   const sections = Array.from(document.querySelectorAll("section")).filter(Boolean);
 
@@ -336,7 +339,7 @@
   }
   window.addEventListener('scroll', highlightNav);
 
-  // Scroll fade & animation
+  // Section fade in
   function sectionFadeIn() {
     document.querySelectorAll('.fade-in').forEach(sec => {
       const rect = sec.getBoundingClientRect();
