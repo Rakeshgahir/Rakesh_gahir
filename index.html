@@ -357,3 +357,116 @@
 </script>
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rakesh Gahir Portfolio with Skill Growth Chart</title>
+  <style>
+    body {
+      background: #000000;
+      color: #f0f0f0;
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #fff;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+    }
+    canvas {
+      background: #111111;
+      border-radius: 12px;
+      margin-top: 16px;
+      width: 100% !important;
+      height: 350px !important;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h1>Rakesh Gahir - Cybersecurity Engineer</h1>
+
+  <section id="skill-growth">
+    <h2>Skill Growth Over Time</h2>
+    <canvas id="skillsChart"></canvas>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    const skillsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan 2021', 'Jun 2021', 'Dec 2021', 'Jun 2022', 'Dec 2022', 'Jun 2023', 'Dec 2023'],
+        datasets: [
+          {
+            label: 'Python',
+            data: [40, 55, 68, 75, 83, 90, 95],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.3)',
+            tension: 0.3,
+            fill: true,
+            pointRadius: 4
+          },
+          {
+            label: 'SIEM Tools',
+            data: [35, 48, 60, 70, 80, 88, 92],
+            borderColor: 'rgba(255, 206, 86, 1)',
+            backgroundColor: 'rgba(255, 206, 86, 0.3)',
+            tension: 0.3,
+            fill: true,
+            pointRadius: 4
+          },
+          {
+            label: 'Cloud Security',
+            data: [20, 33, 46, 60, 72, 85, 90],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.3)',
+            tension: 0.3,
+            fill: true,
+            pointRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Skill proficiency progression (%)',
+            font: { size: 18, weight: 'bold' }
+          },
+          legend: { position: 'top', labels: { font: { size: 14 } } },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              stepSize: 10,
+              color: '#eee',
+              font: { size: 13 }
+            },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          },
+          x: {
+            ticks: { color: '#eee', font: { size: 13 } },
+            grid: { display: false }
+          }
+        },
+        animation: { duration: 2000, easing: 'easeOutQuart' }
+      }
+    });
+  </script>
+
+</body>
+</html>
+
