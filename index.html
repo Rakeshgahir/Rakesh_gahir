@@ -5,228 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rakesh Gahir | Cybersecurity Engineer Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://www.svgrepo.com/show/193915/cyber-security.svg" type="image/svg+xml">
   <style>
-    body {
-      background: #000;
-      color: #f0f0f0;
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 80px 20px 40px 20px;
-      border-bottom: 2px solid #222;
-    }
-    .avatar {
-      width:90px; height:90px; border-radius:50%;
-      object-fit:cover; margin-bottom:18px; box-shadow: 0 5px 32px #0008;
-      border: 4px solid #fff;
-      background:#fff;
-    }
-    header h1 { font-size: 2.7rem; margin-bottom:10px;}
-    header .tagline { color: #e0e0e0; font-size: 1.25rem; margin-bottom:10px;}
-    header .header-links {margin-bottom:0;}
-    header a {
-      color:#fff; font-weight:600; margin:0 7px; text-decoration:none;
-      transition:.2s;
-    }
-    header a:hover {color:#bbb;}
-    nav {
-      display: flex; justify-content: center; align-items: center;
-      background: #181818; position: sticky; top: 0; z-index: 150;
-      box-shadow:0 2px 10px #0007;
-    }
-    nav a {
-      color: #d0d0d0; padding: 18px 16px; text-decoration: none; font-weight: 500;
-      position:relative; transition:.2s;
-    }
-    nav .active, nav a:hover {
-      color: #fff;
-    }
-    nav .active:after, nav a:hover:after {
-      content:'';
-      display:block;
-      margin:auto; margin-top:3px;
-      width:30px; height:3px;
-      border-radius:2px;
-      background:#fff;
-      opacity:.9;
-      transition:.3s;
-    }
-    section {
-      padding: 60px 20px 30px 20px;
-      max-width: 1100px; margin: auto;
-      position:relative;
-    }
-    section h2 {
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 1.8rem;
-      letter-spacing:2px;
-      margin-bottom: 28px;
-      border-bottom: 1.5px solid #1a1a1a;
-      padding-bottom: 8px;
-    }
-    .glass {
-      background: rgba(16,16,16,0.98);
-      border-radius: 16px;
-      box-shadow: 0 7px 36px #0007;
-      border: 1.5px solid #222;
-      backdrop-filter: blur(8px);
-    }
-    .skills-grid, .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-      gap: 24px;
-      margin-bottom:12px;
-    }
-    .skill-card, .project-card {
-      padding: 26px 20px;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px #0004;
-      color: #fff;
-      background: #181818;
-      border-bottom: 2.5px solid #222;
-      border-right: 2.5px solid #222;
-      transition: .22s;
-    }
-    .skill-card:hover, .project-card:hover {
-      background: #232323;
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 12px 40px #0008;
-    }
-    .projects-grid .project-card h4 {
-      color:#fff; font-size:1.17rem; margin-bottom:6px; margin-top:0;
-      letter-spacing:.5px;
-    }
-    .timeline { border-left: 3px solid #222; margin-left: 16px; padding-left: 26px;}
-    .job { margin-bottom: 42px;}
-    .job h3 { color: #fff;}
-    .job span {color: #bcbcbc;}
-    .edu-list, .cert-list {
-      list-style: none; margin: 0; padding: 0;
-    }
-    .edu-list li, .cert-list li {
-      background: #121212;
-      margin-bottom: 10px; padding: 15px 18px;
-      border-radius: 8px; border-left: 3px solid #222;
-      color:#e8e8e8;
-      transition: .14s;
-    }
-    .edu-list li:hover, .cert-list li:hover {background:#181818;}
-    .contact-form {
-      background: #181818;
-      padding:30px; max-width:520px; margin:auto; border-radius:15px;
-      box-shadow:0 6px 25px #0008;
-    }
-    .contact-form label {
-      color: #fff; display:block; margin-top:13px;
-    }
-    .contact-form input, .contact-form textarea {
-      width:100%; padding:11px; margin-top:4px;
-      border-radius: 6px; border:1.3px solid #222;
-      background: #101010; color: #fff; font-size:1em;
-      transition:.18s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {outline:2px solid #fff;}
-    .contact-form button {
-      margin-top:18px; background: #fff;
-      color: #111; padding: 13px 34px;font-size: 1.09rem;
-      border:none; border-radius:8px; font-weight:700;
-      cursor:pointer; transition:.18s;
-      box-shadow:0 2px 12px #0006;
-    }
-    .contact-form button:hover {background:#e0e0e0; color:#000;}
-    .contact-social {text-align:center;margin-top:20px;}
-    .contact-social a {
-      display:inline-block; margin:6px 15px;
-      font-size:1.4em; color:#fff;
-      transition:.24s; vertical-align:middle;
-    }
-    .contact-social a:hover {color:#bbb;}
-    footer {
-      background: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 26px 10px 16px 10px;
-      font-size:1rem;
-      margin-top:42px;
-      letter-spacing:.2px;
-      border-top:1.5px solid #222;
-    }
-    footer a { color: #fff; margin: 0 5px;}
-    .fade-in { opacity:0; transform:translateY(54px) scale(0.98); transition:all 1s;}
-    .fade-in.visible {opacity:1; transform:translateY(0) scale(1);}
-    @media (max-width:760px) {
-      header {padding:44px 8px;}
-      header h1{font-size:2.1rem;}
-      .skills-grid,.projects-grid {grid-template-columns:1fr;}
-    }
+    body {background:#0a0f1a; color:#e5e7eb; font-family:'Roboto',sans-serif; margin:0;}
+    header {background:#0e1830; color:#58a6ff; text-align:center; padding:60px 20px 40px 20px;}
+    header h1 {font-size:2.6rem;}
+    header p {color:#ccc;}
+    nav {display:flex;justify-content:center;align-items:center; background:#161c2d; position:sticky;top:0;z-index:100;}
+    nav a {color:#c2e9fb;padding:18px 16px;text-decoration:none;transition:.2s;font-weight:500;}
+    nav a:hover {color:#58a6ff;border-bottom:2px solid #58a6ff;}
+    section {padding:60px 20px;max-width:1100px;margin:auto;}
+    section h2 {color:#58a6ff;text-transform:uppercase;font-size:1.8rem;margin-bottom:30px;}
+    .skills-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;}
+    .skill-card {background:#1e293b;padding:22px;border-radius:10px;box-shadow:0 2px 6px #06142e55;}
+    .timeline {border-left:3px solid #58a6ff; margin-left:14px; padding-left:22px;}
+    .job {margin-bottom:40px;}
+    .job h3 {color:#fff;}
+    .job span {color:#9ca3af;}
+    .projects-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px;}
+    .project-card {background:#181f34; border-radius:12px; box-shadow:0 2px 8px #02061744; padding:24px;}
+    .project-card h4 {color:#58a6ff; margin:0 0 0.6em;}
+    .edu-list,.cert-list {list-style:none; margin:0; padding:0;}
+    .edu-list li,.cert-list li {background:#1e293b; margin-bottom:10px; padding:16px; border-radius:8px;}
+    .contact-form {background:#1e293b; padding:25px;max-width:500px;margin:auto; border-radius:12px;}
+    .contact-form label {display:block; margin-top:12px; color:#58a6ff;}
+    .contact-form input,.contact-form textarea {width:100%; padding:10px; margin-top:6px; border-radius:6px; border:none; background:#111827; color:#e5e7eb;}
+    .contact-form button {margin-top:16px; background:#58a6ff;color:#0a0f1a;padding:12px 32px;font-size:1.1rem;border:none;border-radius:7px;cursor:pointer;}
+    .contact-form button:hover {background:#4ad6ff;}
+    footer {background:#111827;color:#a9b4cb;text-align:center;padding:30px 10px;}
+    footer a {color:#58a6ff; margin:0 5px;}
+    [data-animate] {opacity:0; transform:translateY(36px); transition:all 0.8s;}
+    [data-animate].visible {opacity:1; transform:translateY(0);}
+    /* Responsive */
+    @media(max-width:600px) { header h1{font-size:2rem;} .projects-grid{grid-template-columns:1fr;}}
   </style>
-  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
 <header>
-  <img src="https://www.svgrepo.com/show/193915/cyber-security.svg" alt="Rakesh Gahir Avatar" class="avatar" />
   <h1>Rakesh Gahir</h1>
-  <p class="tagline">Cybersecurity Engineer • Threat Hunter • Incident Responder</p>
-  <div class="header-links">
-    <a href="mailto:Rakeshgahir@gmail.com"><i data-feather="mail"></i> Email</a> |
-    <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank"><i data-feather="linkedin"></i> LinkedIn</a> |
-    +91-7978674292
-  </div>
+  <p>Cybersecurity Engineer | <a href="mailto:Rakeshgahir@gmail.com" style="color:#4ad6ff">Rakeshgahir@gmail.com</a> | India<br>
+     <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank" style="color:#4ad6ff">LinkedIn</a> | +91-7978674292
+  </p>
 </header>
-
 <nav>
-  <a href="#profile" class="nav-link active">Profile</a>
-  <a href="#skills" class="nav-link">Skills</a>
-  <a href="#experience" class="nav-link">Experience</a>
-  <a href="#projects" class="nav-link">Projects</a>
-  <a href="#education" class="nav-link">Education</a>
-  <a href="#certifications" class="nav-link">Certifications</a>
-  <a href="#contact" class="nav-link">Contact</a>
+  <a href="#profile">Profile</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<section id="profile" class="fade-in">
+<section id="profile" data-animate>
   <h2>Profile</h2>
-  <p>
-    Cybersecurity professional with 4.1+ years of hands-on experience in SOC operations, security incident investigation, implementation & migration of security technologies.<br>
-    <b>Bachelor’s in Computer Science.</b> Excellent troubleshooting, fast learner, proven leadership, and problem-solving ability. Effective communicator and committed team player.
-  </p>
+  <p>Cybersecurity professional with 4.1+ years of hands-on experience in SOC operations, security incident investigation, implementation & migration of security technologies. Bachelor’s in Computer Science. Excellent troubleshooting, fast learner, proven leadership, and problem-solving ability. Effective communicator and committed team player.</p>
 </section>
 
-<section id="skills" class="glass fade-in">
-  <h2>Skills &amp; Technologies</h2>
+<section id="skills" data-animate>
+  <h2>Skills & Technologies</h2>
   <div class="skills-grid">
-    <div class="skill-card"><b>SIEM:</b> Azure Sentinel (Admin), ArcSight, Splunk (Analyst)</div>
-    <div class="skill-card"><b>EDR/XDR:</b> Microsoft 365 Defender XDR, Crowdstrike Falcon</div>
-    <div class="skill-card"><b>DLP:</b> Forcepoint, Akamai</div>
-    <div class="skill-card"><b>Firewall/Proxy:</b> FortiGate, PfSense, Cisco Umbrella</div>
-    <div class="skill-card"><b>SOAR:</b> XSOAR, Shuffle</div>
-    <div class="skill-card"><b>Threat Intelligence:</b> MISP, Pulse Dive</div>
-    <div class="skill-card"><b>Languages:</b> Python, Bash, SQL</div>
-    <div class="skill-card"><b>IPS/Signatures:</b> Zeek, Suricata, Snort, Yara</div>
-    <div class="skill-card"><b>Vulnerability:</b> OpenVAS, Qualys, Nessus, Nmap</div>
-    <div class="skill-card"><b>Packet Analysis:</b> Wireshark, TCPDump, Brim</div>
-    <div class="skill-card"><b>Cloud:</b> Microsoft Azure</div>
-    <div class="skill-card"><b>Email Security:</b> Azure ATP, Proxmox</div>
-    <div class="skill-card"><b>OS:</b> Windows, Ubuntu, CentOS, Kali Linux</div>
+    <div class="skill-card"><b>SIEM:</b><br> Azure Sentinel (Admin), ArcSight, Splunk (Analyst)</div>
+    <div class="skill-card"><b>EDR/XDR:</b><br> Microsoft 365 Defender XDR, Crowdstrike Falcon</div>
+    <div class="skill-card"><b>DLP:</b><br> Forcepoint, Akamai</div>
+    <div class="skill-card"><b>Firewall/Proxy:</b><br> FortiGate, PfSense, Cisco Umbrella</div>
+    <div class="skill-card"><b>SOAR:</b><br> XSOAR, Shuffle</div>
+    <div class="skill-card"><b>Threat Intelligence:</b><br> MISP, Pulse Dive</div>
+    <div class="skill-card"><b>Languages:</b><br> Python, Bash, SQL</div>
+    <div class="skill-card"><b>IPS/Signatures:</b><br> Zeek, Suricata, Snort, Yara</div>
+    <div class="skill-card"><b>Vulnerability:</b> <br> OpenVAS, Qualys, Nessus, Nmap</div>
+    <div class="skill-card"><b>Packet Analysis:</b><br> Wireshark, TCPDump, Brim</div>
+    <div class="skill-card"><b>Cloud:</b><br> Microsoft Azure</div>
+    <div class="skill-card"><b>Email Security:</b><br> Azure ATP, Proxmox</div>
+    <div class="skill-card"><b>OS:</b><br> Windows, Ubuntu, CentOS, Kali Linux</div>
   </div>
 </section>
 
-<section id="experience" class="fade-in">
+<section id="experience" data-animate>
   <h2>Experience</h2>
   <div class="timeline">
     <div class="job">
       <h3>Sr Information Security Analyst | Resillion</h3>
       <span>Remote | Oct 2023 – Present</span>
       <ul>
-        <li>Leading 24x7 SOC operations with Sentinel, CrowdStrike, Elastic, Defender XDR</li>
+        <li>Leading 24x7 SOC operations with tools like Sentinel, CrowdStrike, Elastic, Defender XDR</li>
         <li>Security audits, risk assessments, incident response, and client solution delivery</li>
       </ul>
     </div>
@@ -234,7 +95,7 @@
       <h3>SOC Analyst | Myntra Designs Pvt. Ltd (via MSSP)</h3>
       <span>Bangalore | Aug 2022 – Oct 2023</span>
       <ul>
-        <li>24x7x365 monitoring of EDR alerts, incident triage, and threat investigation</li>
+        <li>24x7x365 monitoring of EDR alerts, incident triage, threat investigation</li>
         <li>Mentored junior analysts, collaborated in crisis response</li>
       </ul>
     </div>
@@ -257,34 +118,34 @@
   </div>
 </section>
 
-<section id="projects" class="glass fade-in">
+<section id="projects" data-animate>
   <h2>Featured Projects</h2>
   <div class="projects-grid">
     <div class="project-card">
       <h4>Security Automation with SOAR</h4>
-      <p>Implemented automated playbooks in XSOAR for phishing detection/response, lowering response times and analyst workload.</p>
+      <p>Designed and implemented automated playbooks in XSOAR to detect and respond to phishing, dramatically reducing response time and analyst fatigue.</p>
     </div>
     <div class="project-card">
       <h4>Threat Hunting Platform with Zeek & Suricata</h4>
-      <p>Developed network traffic monitoring and adversary detection using Zeek, Suricata, and custom YARA rules.</p>
+      <p>Developed network traffic monitoring and adversary detection solutions using Zeek, Suricata, and custom YARA rules for real-time intelligence.</p>
     </div>
     <div class="project-card">
       <h4>Cloud Security Posture Assessment</h4>
-      <p>Led Azure security posture review, documented misconfigurations, and reported actionable mitigation paths.</p>
+      <p>Led Azure security posture review, identifying and documenting misconfigurations and reporting actionable mitigations to client teams.</p>
     </div>
   </div>
 </section>
 
-<section id="education" class="glass fade-in">
+<section id="education" data-animate>
   <h2>Education</h2>
   <ul class="edu-list">
-    <li><b>B.Tech</b>, Computer Science Engineering — Centurion University (2017–2021)</li>
+    <li><b>B.Tech</b>, Computer Science Engineering<br>Centurion University (2017–2021)</li>
     <li><b>Intermediate</b>, BN International College (2014–2016)</li>
     <li><b>Secondary (X)</b>, Young Blood Public School (2013–2014)</li>
   </ul>
 </section>
 
-<section id="certifications" class="glass fade-in">
+<section id="certifications" data-animate>
   <h2>Certifications</h2>
   <ul class="cert-list">
     <li>Certified Ethical Hacker (EC-Council) - ECC8725910463</li>
@@ -295,64 +156,38 @@
   </ul>
 </section>
 
-<section id="contact" class="glass fade-in">
+<section id="contact" data-animate>
   <h2>Contact Me</h2>
   <form class="contact-form">
-    <label for="name">Name *</label>
-    <input id="name" name="name" required autocomplete="off" placeholder="Your name">
-    <label for="email">Email *</label>
-    <input id="email" name="email" type="email" required autocomplete="off" placeholder="your@email.com">
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" rows="4" required placeholder="Type your message..."></textarea>
+    <label for="name">Name</label>
+    <input id="name" name="name" required>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
     <button type="submit">Send Message</button>
   </form>
-  <div class="contact-social">
-    <a href="mailto:Rakeshgahir@gmail.com" title="Email"><i data-feather="mail"></i></a>
-    <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank" title="LinkedIn"><i data-feather="linkedin"></i></a>
-  </div>
 </section>
+
 <footer>
-  <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio. Crafted with <span style="color:#fff;">&#10084;</span> & AI.</p>
+  <p>© 2025 Rakesh Gahir — Cybersecurity Portfolio Website</p>
   <a href="mailto:Rakeshgahir@gmail.com">Email</a> |
   <a href="https://www.linkedin.com/in/rakeshgahir" target="_blank">LinkedIn</a>
 </footer>
+
 <script>
-  // Feather icons
-  feather.replace();
-
-  // Nav highlight
-  const navLinks = document.querySelectorAll('nav .nav-link');
-  const sections = Array.from(document.querySelectorAll("section")).filter(Boolean);
-
-  function highlightNav() {
-    let closestIdx = 0;
-    let minDist = Infinity;
-    sections.forEach((sec,i) => {
-      const rect = sec.getBoundingClientRect();
-      const dist = Math.abs(rect.top - 64);
-      if(dist < minDist && rect.top < window.innerHeight - 100) {
-        minDist = dist; closestIdx = i;
-      }
+  // Reveal sections on scroll
+  const items = document.querySelectorAll("[data-animate]");
+  window.addEventListener("scroll", () => {
+    const reveal = window.innerHeight * 0.85;
+    items.forEach(item => {
+      if(item.getBoundingClientRect().top < reveal) item.classList.add("visible");
     });
-    navLinks.forEach(l=>l.classList.remove('active'));
-    navLinks[closestIdx].classList.add('active');
-  }
-  window.addEventListener('scroll', highlightNav);
-
-  // Section fade in
-  function sectionFadeIn() {
-    document.querySelectorAll('.fade-in').forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if(rect.top < window.innerHeight*0.91) sec.classList.add('visible');
-    });
-  }
-  window.addEventListener('scroll',sectionFadeIn);
-  window.addEventListener('DOMContentLoaded',() => {highlightNav();sectionFadeIn();});
-
-  // Demo contact form handler
+  });
+  // Dummy contact form alert (replace with backend integration as desired)
   document.querySelector('.contact-form').addEventListener('submit', e => {
     e.preventDefault();
-    alert('Message sent! (This is demo only — connect a backend for live delivery.)');
+    alert('Message sent! (This is a demo. Integrate with your email backend for real submissions.)');
   });
 </script>
 </body>
